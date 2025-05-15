@@ -1,5 +1,5 @@
 //const map = L.map("map").setView([35.669400214188606, 139.48343915372877], 15);
-const map = L.map("map").setView([35.63122739784360, 139.650700004496], 12);
+const map = L.map("map").setView([35.63122739784360, 139.650700004496], 13);
 
 // 背景地図はOpenStreetMap
 // Base map
