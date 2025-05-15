@@ -26,3 +26,20 @@ const japanBaseMap = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/
 googleMap.addTo(map)
 
 var marker = L.marker([35.63122739784360, 139.650700004496]).addTo(map);
+fetch(`https://uedayou.net/loa/東京都世田谷区.geojson`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to fetch geojson for ${areaInfo['area_name']}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    const polygon = L.geoJSON(data, {
+      //style: getGeoJsonStyle(progress[key]),
+    });
+    //polygon.bindPopup(`<b>${areaInfo['area_name']}</b><br>ポスター貼り進捗: ${(progress[key]*100).toFixed(1)}%<br>残り: ${progressCountdown[key]}ヶ所`);
+    polygon.addTo(map);
+  })
+  .catch((error) => {
+    console.error('Error fetching geojson:', error);
+  });
